@@ -1,0 +1,30 @@
+name: VSPhone Live Stock Monitor
+
+on:
+  schedule:
+    # Berjalan otomatis setiap 5 menit (cron minimum di GitHub Actions)
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+    # Mengizinkan Anda menjalankan manual kapan saja dari tab "Actions" di GitHub
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Run Stock Monitor
+        env:
+          GITHUB_ACTIONS: 'true'
+          VSPHONE_TOKEN: ${{ secrets.VSPHONE_TOKEN }}
+          VSPHONE_USER_ID: ${{ secrets.VSPHONE_USER_ID }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_MESSAGE_ID: ${{ secrets.DISCORD_MESSAGE_ID }}
+        run: node check_shop_stock.js
