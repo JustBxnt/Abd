@@ -5,14 +5,14 @@ const path = require('path');
 // =========================================================================
 // 1. PENGATURAN UTAMA (Mendukung Environment Variables untuk GitHub Actions)
 // =========================================================================
-const TOKEN = process.env.VSPHONE_TOKEN || "YHheiaQbsA7Pj2rXSIasde1SaxpPwtXD"; 
-const USER_ID = process.env.VSPHONE_USER_ID || "2218649";                       
+const TOKEN = process.env.VSPHONE_TOKEN || ""; 
+const USER_ID = process.env.VSPHONE_USER_ID || "";                       
 
 // Webhook Discord (Pesan akan diedit otomatis, tidak spam chat)
-const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL || "https://discord.com/api/webhooks/1523230416457306255/huX67dkMZ2bgFe2coy_7cbUl3DkWdi_faqnS__TFzwGCOlsO1aPFiDNxNB1b8ahAPwvU";
+const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL || "";
 
 // ID Pesan Discord spesifik jika Anda ingin mengedit pesan tertentu secara permanen (kosongkan "" untuk mode otomatis)
-const DISCORD_MESSAGE_ID = process.env.DISCORD_MESSAGE_ID || "1523233875717918881";
+const DISCORD_MESSAGE_ID = process.env.DISCORD_MESSAGE_ID || "";
 
 // Deteksi apakah berjalan di lingkungan GitHub Actions
 const isGitHubAction = process.env.GITHUB_ACTIONS === 'true';
